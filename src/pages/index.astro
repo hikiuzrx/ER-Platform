@@ -4,24 +4,23 @@ import Hero from '../components/Hero.astro'
 import Feature from '../components/Feature.astro'
 import Counter from '../components/Counter.astro'
 import ContentMedia from '../components/ContentMedia.astro'
+import LoginForm from '../components/LoginForm.astro';
 ---
 
 <DefaultLayout title="Home">
   <Hero />
+
   <section class="my-64">
     <div class="container">
-      <h2 class="mb-16 text-6xl">Best Partners for this mounth</h2>
+      <h2 class="mb-16 text-6xl">Best Partners for this month</h2>
       <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
-        <Feature  title="Djezzy">
-
-        </Feature>
-        <Feature title="Mobilis">
-        </Feature>
-        <Feature  title="Yassir">
-                  </Feature>
+        <Feature title="Djezzy"></Feature>
+        <Feature title="Mobilis"></Feature>
+        <Feature title="Yassir"></Feature>
       </div>
     </div>
   </section>
+
   <section class="mb-32 mt-64">
     <div class="container">
       <h2 class="mb-16 text-6xl">Counters</h2>
@@ -30,6 +29,14 @@ import ContentMedia from '../components/ContentMedia.astro'
         <Counter count="15" title="Guest" />
         <Counter count="100" title="Media" />
       </div>
+    </div>
+  </section>
+
+  <!-- Ajout d'un espacement avant la section LoginForm -->
+  <section class="mt-64">  <!-- Ajout d'une marge pour espacer du contenu précédent -->
+    <div class="container">
+      <h2 class="mb-16 text-6xl">Connexion</h2>
+      <LoginForm/>
     </div>
   </section>
 </DefaultLayout>

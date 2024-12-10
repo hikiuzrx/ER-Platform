@@ -1,0 +1,149 @@
+---
+// Aucun besoin de logique ici pour le moment, juste la structure du composant
+---
+
+<div class="form-container">
+  <!-- Onglets -->
+  <div class="tabs">
+    <button id="login-tab" class="active">Connexion</button>
+    <button id="signup-tab">Inscription</button>
+  </div>
+
+  <!-- Contenu des formulaires -->
+  <!-- Formulaire de Connexion -->
+  <div id="login-form" class="form-content active" >
+    <form action="/login" method="POST">
+      <input type="email" name="email" placeholder="Email" class="input-field" required />
+      <input type="password" name="password" placeholder="Mot de passe" class="input-field" required />
+      <button type="submit" class="btn">Se connecter</button>
+    </form>
+    <p>Pas encore de compte? <a href="javascript:void(0);" id="go-to-signup">S'inscrire</a></p>
+  </div>
+
+  <!-- Formulaire d'Inscription -->
+  <div id="signup-form" class="form-content">
+    <form action="/signup" method="POST">
+      <input type="text" name="username" placeholder="Nom d'utilisateur" class="input-field" required />
+      <input type="email" name="email" placeholder="Email" class="input-field" required />
+      <input type="password" name="password" placeholder="Mot de passe" class="input-field" required />
+      <button type="submit" class="btn">S'inscrire</button>
+    </form>
+    <p>Déjà un compte? <a href="javascript:void(0);" id="go-to-login">Se connecter</a></p>
+  </div>
+</div>
+
+<style>
+  .form-container {
+    background-color: #FBBC05;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+
+  .tabs button {
+    padding: 10px;
+    border: none;
+    background-color: #f0f0f0;
+    font-size: 16px;
+    cursor: pointer;
+    flex: 1;
+  }
+
+  .tabs button.active {
+    background-color: hsl(207, 70%, 45%);
+    color: white;
+  }
+
+  .form-content {
+    display: none;
+  }
+
+  .form-content.active {
+    display: block;
+  }
+
+  .input-field {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #DB4437;
+  border-radius: 4px;
+  color: #333;  /* Changez cette couleur selon vos préférences */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+
+
+
+
+
+
+  .btn {
+    width: 100%;
+    padding: 10px;
+    background-color: hsl(207, 70%, 45%);
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: #4CAF50;
+  }
+
+  p {
+    margin-top: 10px;
+  }
+
+  p a {
+    color: hsl(207, 70%, 45%);
+    text-decoration: none;
+  }
+</style>
+
+<script>
+  // Gestion des onglets pour connexion et inscription
+  const loginTab = document.getElementById('login-tab');
+  const signupTab = document.getElementById('signup-tab');
+  const loginForm = document.getElementById('login-form');
+  const signupForm = document.getElementById('signup-form');
+  const goToSignup = document.getElementById('go-to-signup');
+  const goToLogin = document.getElementById('go-to-login');
+
+    loginTab.addEventListener('click', () => {
+    loginTab.classList.add('active');
+    signupTab.classList.remove('active');
+    loginForm.classList.add('active');
+    signupForm.classList.remove('active');
+  });
+
+  signupTab.addEventListener('click', () => {
+    signupTab.classList.add('active');
+    loginTab.classList.remove('active');
+    signupForm.classList.add('active');
+    loginForm.classList.remove('active');
+  });
+
+  goToSignup.addEventListener('click', () => {
+    signupTab.click();
+  });
+
+  goToLogin.addEventListener('click', () => {
+    loginTab.click();
+  });
+</script>
