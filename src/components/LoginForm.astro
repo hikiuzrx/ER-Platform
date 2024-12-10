@@ -1,0 +1,59 @@
+---
+import { app, authenticateUser } from '../auth.js';
+
+let username = '';
+let password = '';
+let error = null;
+
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  try {
+    const user = await authenticateUser(username, password);
+    if (user) {
+      event.target.session.user = user;
+      event.target.response.redirect('/dashboard');
+    } else {
+      error = 'Identifiants invalides';
+    }
+  } catch (err) {
+    error = 'Une erreur est survenue';
+  }
+};
+---
+
+<div class="flex items-center justify-center h-screen">
+  <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-6 text-[#333]">Connexion</h1>
+    <form on:submit={handleSubmit} class="space-y-4">
+      <div>
+        <label for="username" class="block font-medium mb-1 text-[#555]">Nom d'utilisateur</label>
+        <input
+          type="text"
+          id="username"
+          bind:value={username}
+          required
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-[#333] leading-tight focus:outline-none focus:shadow-outline"
+        >
+      </div>
+      <div>
+        <label for="password" class="block font-medium mb-1 text-[#555]">Mot de passe</label>
+        <input
+          type="password"
+          id="password"
+          bind:value={password}
+          required
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-[#333] leading-tight focus:outline-none focus:shadow-outline"
+        >
+      </div>
+      {error && <div class="text-[#ff0000]">{error}</div>}
+      <button
+        type="submit"
+        class="bg-[#007bff] hover:bg-[#0056b3] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      >
+        Se connecter
+      </button>
+    </form>
+  </div>
+</div>
+
+<userStyle>Normal</userStyle>
