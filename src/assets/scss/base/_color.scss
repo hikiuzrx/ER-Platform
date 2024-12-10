@@ -1,0 +1,35 @@
+// | -------------------------------------------------------------
+// | Color
+// | -------------------------------------------------------------
+
+
+$colors: (
+  primary: (
+    100: hsl(207, 100%, 85%),  // Bleu clair (Google blue light)
+    200: hsl(207, 90%, 68%),   // Bleu moyen
+    300: hsl(207, 80%, 50%),   // Bleu primaire
+    400: hsl(207, 70%, 45%),   // Bleu plus foncé
+    500: hsl(207, 80%, 40%),   // Bleu profond (Google blue)
+  ),
+  secondary: (
+    100: hsl(145, 63%, 60%),  // Vert clair (Google green light)
+    200: hsl(145, 60%, 45%),  // Vert moyen
+    300: hsl(145, 65%, 35%),  // Vert primaire
+    400: hsl(145, 75%, 25%),  // Vert foncé
+    500: hsl(145, 80%, 18%),  // Vert très foncé
+  ),
+  neutral: (
+    100: hsl(0, 0%, 98%),    // Blanc très clair
+    200: hsl(0, 0%, 90%),    // Gris clair
+    300: hsl(0, 0%, 80%),    // Gris plus clair
+    400: hsl(0, 0%, 70%),    // Gris moyen
+    500: hsl(0, 0%, 60%),    // Gris foncé
+    600: hsl(0, 0%, 40%),    // Gris très foncé
+    700: hsl(0, 0%, 30%),    // Gris encore plus foncé
+    800: hsl(0, 0%, 20%),    // Gris proche du noir
+    900: hsl(0, 0%, 10%),    // Gris très proche du noir
+  ),
+  dark: (
+    100: hsl(240, 4%, 9%),
+  ),
+);
