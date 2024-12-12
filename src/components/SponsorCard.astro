@@ -1,0 +1,97 @@
+---
+const { id, name, image } = Astro.props;
+---
+
+<div class="sponsor-card">
+  <a href={`/sponsors/${id}`}>
+    <img src={image || '/fallback-image.jpg'} alt={`${name} logo`} />
+  </a>
+  <h3>{name}</h3>
+  <div class="buttons">
+    <button class="edit-btn" aria-label="Edit sponsor">Edit</button>
+    <button class="delete-btn" aria-label="Delete sponsor">Delete</button>
+  </div>
+</div>
+
+<style>
+  /* Card Container */
+  .sponsor-card {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+    margin: 1rem;
+    width: 220px;
+    display: inline-block;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Prevent overflow */
+  }
+  .sponsor-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Sponsor Image */
+  .sponsor-card a {
+    display: block; /* Make the link behave like a block */
+  }
+  .sponsor-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+  }
+  .sponsor-card img:hover {
+    transform: scale(1.05);
+  }
+
+  /* Sponsor Name */
+  .sponsor-card h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+
+  /* Buttons Section */
+  .buttons {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+    gap: 0.5rem;
+  }
+  .edit-btn, .delete-btn {
+    flex: 1;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    max-width: 80px;
+    min-width: 60px;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  /* Button Styles */
+  .edit-btn {
+    background-color: #007bff;
+    color: #fff;
+  }
+  .edit-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+  }
+  .delete-btn {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  .delete-btn:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+  }
+</style>

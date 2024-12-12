@@ -1,0 +1,41 @@
+---
+import MainLayout from '../layouts/Layout.astro';
+import AddSponsorButton from '../components/AddSponsorButton.astro';
+import SponsorList from '../components/SponsorList.astro';
+---
+
+<MainLayout title="GDG External Relations">
+  <div class="container mx-auto p-6 space-y-8">
+    <!-- Sponsor List Section -->
+    <div class="p-6 bg-white rounded-xl shadow-lg">
+      <h2 class="text-3xl font-semibold text-gray-900 mb-6">Sponsors Overview</h2>
+      
+      <!-- Add Sponsor Button -->
+      <div class="add-sponsor-container mb-6">
+        <AddSponsorButton />
+      </div>
+
+      <!-- Sponsor List -->
+      <SponsorList />
+    </div>
+  </div>
+</MainLayout>
+
+<style>
+  .add-sponsor-container {
+    text-align: center; /* Center the button */
+    margin-bottom: 1.5rem; /* Add some spacing below the button */
+  }
+
+  h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .container {
+    font-family: 'Poppins', sans-serif;
+  }
+</style>
