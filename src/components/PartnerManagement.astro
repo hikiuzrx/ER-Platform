@@ -1,0 +1,109 @@
+<section>
+  <h2>Partner Management</h2>
+  <form id="partnerForm">
+    <div class="form-group">
+      <label for="partnerName">Partner Name</label>
+      <input type="text" id="partnerName" name="partnerName" placeholder="Enter partner name" required />
+    </div>
+    <div class="form-group">
+      <label for="partnerLocation">Location</label>
+      <input type="text" id="partnerLocation" name="partnerLocation" placeholder="Enter location" required />
+    </div>
+    <div class="form-group">
+      <label for="partnerType">Type</label>
+      <select id="partnerType" name="partnerType">
+        <option value="guest">Guest</option>
+        <option value="sponsor">Sponsor</option>
+        <option value="media">Media</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="communicationStatus">Communication Status</label>
+      <select id="communicationStatus" name="communicationStatus">
+        <option value="pending">Pending</option>
+        <option value="approved">Approved</option>
+        <option value="rejected">Rejected</option>
+      </select>
+    </div>
+    <button type="submit" class="btn">Add Partner</button>
+  </form>
+</section>
+
+<!-- CSS pour le style -->
+<style>
+  /* Couleurs de base de Google */
+  :root {
+    --google-blue: #4285F4;
+    --google-red: #EA4335;
+    --google-yellow: #FBBC05;
+    --google-green: #34A853;
+    --google-gray: #9E9E9E;
+  }
+
+  /* Style global pour la section */
+  section {
+    padding: 20px;
+    background-color: #FBBC05;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    color: black;  /* Changer la couleur du texte en noir */
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  /* Styles du formulaire */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    font-weight: bold;
+    color: black;  /* Changer la couleur du texte en noir */
+  }
+
+  input,
+  select {
+    padding: 10px;
+    border: 2px solid #EA4335;
+    border-radius: 4px;
+    font-size: 16px;
+    color: black;  /* Changer la couleur du texte des champs de saisie et des menus déroulants en noir */
+    transition: border-color 0.3s;
+  }
+
+  input:focus,
+  select:focus {
+    border-color: var(--google-blue);
+    outline: none;
+  }
+
+  /* Bouton de soumission */
+  .btn {
+    padding: 10px 20px;
+    background-color: var(--google-blue);
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn:hover {
+    background-color: var(--google-green);
+  }
+
+  button[type="submit"] {
+    margin-top: 20px;
+  }
+</style>
