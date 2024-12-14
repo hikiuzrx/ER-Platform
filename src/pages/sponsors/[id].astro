@@ -1,0 +1,205 @@
+---
+// src/pages/sponsors/[id].astro
+import SponsorInfo from '../../components/SponsorInfo.astro';
+import EventCard from '../../components/EventCard.astro';
+
+// Import data
+import sponsors from './sponsors.json';
+import events from './event.json';
+
+// Generate static paths for all sponsors
+export function getStaticPaths() {
+  return sponsors.map(sponsor => ({
+    params: { id: sponsor.id.toString() },
+    props: { sponsor }
+  }));
+}
+
+// Get the current sponsor ID from the route
+const { id } = Astro.params;
+
+// Find the sponsor
+const sponsor = sponsors.find(s => s.id.toString() === id);
+
+// If no sponsor found, return a 404
+if (!sponsor) {
+  return Astro.redirect('/sponsors');
+}
+
+// Get contributed events
+const contributedEvents = sponsor.contributions?.map(contribution => {
+  const event = events.find(e => e.id === contribution.eventId);
+  return event ? { 
+    ...event, 
+    contributionType: contribution.type, 
+    amount: contribution.amount 
+  } : null;
+}).filter(Boolean) || [];
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{sponsor.name} - Sponsor Details</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="../" class="breadcrumb-link">Sponsors</a>
+      <span class="breadcrumb-separator">/</span>
+      <span class="breadcrumb-current">{sponsor.name}</span>
+    </nav>
+
+    <div class="sponsor-details-grid">
+      <section class="sponsor-info-section">
+        <div class="card sponsor-info-card">
+          <SponsorInfo sponsorDetails={sponsor} />
+        </div>
+      </section>
+      
+      <section class="events-section">
+        <h2 class="section-title">Contributed Events</h2>
+        
+        {contributedEvents.length > 0 ? (
+          <div class="events-grid">
+            {contributedEvents.map(event => (
+              <div class="event-card-wrapper">
+                <EventCard event={event} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div class="no-events-message">
+            <p>No events contributed yet</p>
+            <p class="subtle-text">This sponsor hasn't contributed to any events recently.</p>
+          </div>
+        )}
+      </section>
+    </div>
+  </div>
+
+  <style>
+    /* Global Styles */
+    :root {
+      --primary-color: #3b82f6;
+      --secondary-color: #10b981;
+      --text-color: #1f2937;
+      --background-color: #f3f4f6;
+      --card-background: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .breadcrumb-link {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .breadcrumb-link:hover {
+      color: var(--secondary-color);
+    }
+
+    .breadcrumb-separator {
+      margin: 0 0.5rem;
+      color: #6b7280;
+    }
+
+    .breadcrumb-current {
+      color: #6b7280;
+    }
+
+    /* Sponsor Details Grid */
+    .sponsor-details-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+    }
+
+    /* Card Styles */
+    .card {
+      background-color: var(--card-background);
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Events Section */
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .event-card-wrapper {
+      transition: transform 0.3s ease;
+    }
+
+    .event-card-wrapper:hover {
+      transform: scale(1.03);
+    }
+
+    /* No Events Message */
+    .no-events-message {
+      background-color: var(--card-background);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    }
+
+    .subtle-text {
+      color: #6b7280;
+      margin-top: 0.5rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .sponsor-details-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</body>
+</html>

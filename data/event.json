@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "name": "Tech Conference 2024",
+      "image": "https://www.shutterstock.com/image-vector/modern-abstract-colorful-conference-logo-260nw-2224600909.jpg",
+      "sponsors": [
+        { "sponsorId": 1, "type": "Finance Contribution", "amount": 10000 },
+        { "sponsorId": 2, "type": "Media Partner", "amount": 0 }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Startup Hackathon",
+      "image": "https://seeklogo.com/images/H/hackathon-logo-4CAFEB2EC3-seeklogo.com.png",
+        "sponsors": [
+        { "sponsorId": 1, "type": "Media Partner", "amount": 0 }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "DevFest 24",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSly5b8yvrmnQNhYixasTc7BTBj_fydLPbb1w&s",
+      "sponsors": [
+        { "sponsorId": 2, "type": "IT Services", "amount": 2500 }
+      ]
+    }
+  ]

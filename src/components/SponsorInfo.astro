@@ -1,0 +1,56 @@
+---
+const { sponsorDetails } = Astro.props;
+/*
+  sponsorDetails: {
+    name: string,
+    location: string,
+    email: string,
+    contact: string
+  }
+*/
+---
+
+<div class="sponsor-info">
+  <h2 class="sponsor-name">{sponsorDetails.name}</h2>
+  <p><strong>Location:</strong> {sponsorDetails.location}</p>
+  <p>
+    <strong>Email:</strong>
+    <a href={`mailto:${sponsorDetails.email}`}>{sponsorDetails.email}</a>
+  </p>
+  <p><strong>Contact:</strong> {sponsorDetails.contact}</p>
+</div>
+
+<style>
+  .sponsor-info {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    flex: 1;
+    height: auto;  /* Ensure the height wraps content */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sponsor-name {
+    font-size: 1.8rem;
+    color: #007bff;
+    margin-bottom: 1rem;
+  }
+
+  .sponsor-info p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    color: #333;
+  }
+
+  .sponsor-info a {
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  .sponsor-info a:hover {
+    text-decoration: underline;
+  }
+</style>

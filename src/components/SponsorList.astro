@@ -1,0 +1,17 @@
+---
+import SponsorCard from './SponsorCard.astro';
+import sponsors from './sponsors.json';---
+
+<div class="sponsor-list">
+  {sponsors.map((sponsor) => (
+    <SponsorCard {...sponsor} />
+  ))}
+</div>
+
+<style>
+  .sponsor-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+</style>
