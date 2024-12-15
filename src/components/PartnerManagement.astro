@@ -10,6 +10,14 @@
       <input type="text" id="partnerLocation" name="partnerLocation" placeholder="Enter location" required />
     </div>
     <div class="form-group">
+      <label for="partnerEmail">Email</label>
+      <input type="email" id="partnerEmail" name="partnerEmail" placeholder="Enter email" required />
+    </div>
+    <div class="form-group">
+      <label for="partnerContact">Contact</label>
+      <input type="text" id="partnerContact" name="partnerContact" placeholder="Enter contact number" required />
+    </div>
+    <div class="form-group">
       <label for="partnerType">Type</label>
       <select id="partnerType" name="partnerType">
         <option value="guest">Guest</option>
@@ -17,13 +25,19 @@
         <option value="media">Media</option>
       </select>
     </div>
+    <!-- Ajout du champ Status of Communication -->
     <div class="form-group">
-      <label for="communicationStatus">Communication Status</label>
+      <label for="communicationStatus">Status of Communication</label>
       <select id="communicationStatus" name="communicationStatus">
         <option value="pending">Pending</option>
         <option value="approved">Approved</option>
         <option value="rejected">Rejected</option>
       </select>
+    </div>
+    <!-- Ajout du champ Image URL -->
+    <div class="form-group">
+      <label for="partnerImage">Image URL</label>
+      <input type="url" id="partnerImage" name="partnerImage" placeholder="Enter image URL" />
     </div>
     <button type="submit" class="btn">Add Partner</button>
   </form>

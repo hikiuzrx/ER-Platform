@@ -8,7 +8,7 @@ const { id, name, image } = Astro.props;
   </a>
   <h3>{name}</h3>
   <div class="buttons">
-    <button class="edit-btn" aria-label="Edit sponsor">Edit</button>
+   <a href={`/sponsors/${id}`} class="edit-btn"> Edit</a> 
     <button class="delete-btn" aria-label="Delete sponsor">Delete</button>
   </div>
 </div>

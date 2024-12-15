@@ -80,126 +80,299 @@ const contributedEvents = sponsor.contributions?.map(contribution => {
     </div>
   </div>
 
+
+  <section class="add-event-section">
+    <h2 class="form-title">Add a New Event</h2>
+    <div class="card add-event-card">
+      <form>
+        <div>
+          <label for="event-name">Event Name:</label>
+          <input 
+            type="text" 
+            id="event-name" 
+            required
+          />
+        </div>
+        <div>
+          <label for="event-date">Event Date:</label>
+          <input 
+            type="date" 
+            id="event-date" 
+            required
+          />
+        </div>
+        <div>
+          <label for="event-description">Event Description:</label>
+          <textarea 
+            id="event-description" 
+            rows="4" 
+            required
+          ></textarea>
+        </div>
+        <div>
+          <label for="contribution-type">Contribution Type:</label>
+          <select 
+            id="contribution-type" 
+            required
+          >
+            <option value="">Select a contribution type</option>
+            <option value="financial">Financial</option>
+            <option value="media">Media</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="amount">Amount:</label>
+          <input 
+            type="number" 
+            id="amount" 
+            placeholder="Enter amount if financial" 
+          />
+        </div>
+        <div>
+          <label for="event-image">Event Image:</label>
+          <input 
+            type="file" 
+            id="event-image" 
+            accept="image/*"
+          />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </section>
+  
   <style>
-    /* Global Styles */
-    :root {
-      --primary-color: #3b82f6;
-      --secondary-color: #10b981;
-      --text-color: #1f2937;
-      --background-color: #f3f4f6;
-      --card-background: #ffffff;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--background-color);
-      color: var(--text-color);
-      line-height: 1.6;
-    }
-
-    /* Container */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-
-    /* Breadcrumb */
-    .breadcrumb {
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: center;
-      font-size: 0.9rem;
-    }
-
-    .breadcrumb-link {
+    /* Title Styling */
+    .form-title {
+      font-size: 1.8rem;
+      font-weight: 700;
       color: var(--primary-color);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .breadcrumb-link:hover {
-      color: var(--secondary-color);
-    }
-
-    .breadcrumb-separator {
-      margin: 0 0.5rem;
-      color: #6b7280;
-    }
-
-    .breadcrumb-current {
-      color: #6b7280;
-    }
-
-    /* Sponsor Details Grid */
-    .sponsor-details-grid {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 2rem;
-    }
-
-    /* Card Styles */
-    .card {
-      background-color: var(--card-background);
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-      padding: 2rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Events Section */
-    .section-title {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-      color: var(--primary-color);
-      font-weight: 600;
-    }
-
-    .events-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .event-card-wrapper {
-      transition: transform 0.3s ease;
-    }
-
-    .event-card-wrapper:hover {
-      transform: scale(1.03);
-    }
-
-    /* No Events Message */
-    .no-events-message {
-      background-color: var(--card-background);
-      border-radius: 12px;
-      padding: 2rem;
       text-align: center;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      margin-bottom: 1.5rem;
     }
+  
+    /* Add Event Card */
+    .add-event-card form div {
+      margin-bottom: 1rem; /* Reduced spacing between fields */
+    }
+  
+    .add-event-card input,
+    .add-event-card select,
+    .add-event-card textarea {
+      padding: 0.6rem; /* Smaller padding for a compact design */
+    }
+  
+    .add-event-card button {
+      margin-top: 1rem;
+    }
+  </style>
+  
 
-    .subtle-text {
-      color: #6b7280;
-      margin-top: 0.5rem;
-    }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .sponsor-details-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+
+
+
+
+
+  <style>
+/* Global Styles */
+:root {
+  --primary-color: #3b82f6;
+  --secondary-color: #10b981;
+  --text-color: #1f2937;
+  --background-color: #f3f4f6;
+  --card-background: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.breadcrumb-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb-link:hover {
+  color: var(--secondary-color);
+}
+
+.breadcrumb-separator {
+  margin: 0 0.5rem;
+  color: #6b7280;
+}
+
+.breadcrumb-current {
+  color: #6b7280;
+}
+
+/* Sponsor Details Grid */
+.sponsor-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+}
+
+/* Card Styles */
+.card {
+  background-color: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Events Section */
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.event-card-wrapper {
+  transition: transform 0.3s ease;
+}
+
+.event-card-wrapper:hover {
+  transform: scale(1.03);
+}
+
+/* No Events Message */
+.no-events-message {
+  background-color: var(--card-background);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.subtle-text {
+  color: #6b7280;
+  margin-top: 0.5rem;
+}
+
+/* Form Card Style */
+.add-event-card {
+  margin-top: 1.5rem; /* Espacement avec la section précédente */
+  background-color: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.add-event-card form div {
+  margin-bottom: 1.5rem; /* Espacement entre les champs du formulaire */
+}
+
+.add-event-card label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.add-event-card input,
+.add-event-card select,
+.add-event-card textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 0.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  color: var(--text-color);
+}
+
+.add-event-card input[type="file"] {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  cursor: pointer;
+}
+
+.add-event-card button {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-event-card button:disabled {
+  background-color: #6b7280;
+  cursor: not-allowed;
+}
+
+.add-event-card button:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Section Title for Add Event */
+.section-title {
+  font-size: 1.5rem; /* Taille du texte */
+  font-weight: 600;  /* Met en valeur le texte */
+  color: var(--primary-color);
+  text-align: center;
+  margin-top: 2rem;  /* Espace en haut */
+  margin-bottom: 2rem; /* Espace en bas */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sponsor-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
   </style>
 </body>
 </html>
